@@ -46,7 +46,7 @@
         <section class="hero">
             <h1 class="hero-title">Эффективные решения
                 <br> для вашего бизнеса</h1>
-            <a href="" class="hero-button">Заказать услугу</a>
+            <button class="hero-button" data-modal-open>Заказать услугу</button>
         </section>
 
         <section class="our-advantages">
@@ -366,6 +366,12 @@
         </div>
     </div>
     </footer>
+
+    <div class="backdrop is-hidden" data-modal>
+        <div class="modal">
+            <button data-modal-close>x</button>
+        </div>
+    </div>
 
 <script src="./js/modal.js"></script>
 </body>

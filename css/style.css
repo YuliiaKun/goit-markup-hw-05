@@ -103,6 +103,11 @@ nav {
 
 .site-nav {
   display: flex;
+  /* position: relative; */
+}
+
+.site-nav .item {
+  position: relative;
 }
 
 .site-nav .item:not(:last-child) {
@@ -119,6 +124,10 @@ nav {
   font-size: 14px;
   line-height: 1.33;
   letter-spacing: 0.02em;
+
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-page.current {
@@ -127,6 +136,18 @@ nav {
   font-size: 14px;
   line-height: 1.33;
   letter-spacing: 0.02em;
+}
+
+.current::after {
+  display: block;
+  content: "";
+  height: 4px;
+  width: 100%;
+  border-radius: 2px;
+  background-color: var(--accent-color);
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 .site-contact {
@@ -144,6 +165,10 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-contact .item + .item {
@@ -157,8 +182,8 @@ nav {
 
 .nav-page:hover,
 .nav-page:focus,
-.site-contact .item:hover,
-.site-contact .item:focus {
+.nav-contact:hover,
+.nav-contact:focus {
   color: var(--accent-color);
 }
 
@@ -199,9 +224,13 @@ nav {
 .hero-button {
   display: inline-block;
   padding: 10px 32px;
+  border: 0;
 
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.87;
+  letter-spacing: 0.06em;
   min-width: 200px;
-  padding: 10px 32px;
   border-radius: 4px;
   text-align: center;
   background-color: var(--accent-color);
@@ -283,6 +312,9 @@ nav {
 
 .our-work-img {
   display: flex;
+}
+
+.work-img {
   position: relative;
 }
 
@@ -378,9 +410,14 @@ nav {
   height: 44px;
   border-radius: 50%;
   color: #afb1b8;
+
+  transition-property: color, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.section-icon:hover {
+.section-icon:hover,
+.section-icon:focus {
   background-color: var(--accent-color);
   color: var(--primery-white-color);
 }
@@ -411,6 +448,10 @@ nav {
   box-sizing: border-box;
   border-radius: 4px;
   color: #afb1b8;
+
+  transition-property: color, border;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .client-icon:hover,
@@ -526,6 +567,10 @@ nav {
   text-align: center;
   background-color: var(--background);
   color: var(--txt-title-color);
+
+  transition-property: background-color, color, box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .filters:hover,
@@ -551,12 +596,45 @@ nav {
 
 .portfolio-card {
   display: block;
+
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.img-card {
+  position: relative;
+
+  overflow: hidden;
 }
 
 .portfolio-card:hover,
-.portfolio-card:focus {
+.portfolio-card:focus,
+.portfolio-card:hover .portfolio-text,
+.portfolio-card:focus .portfolio-text {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
+  transform: translateY(0);
+}
+
+.portfolio-text {
+  padding: 63px 24px;
+
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+  color: var(--primery-white-color);
+  background-color: rgba(33, 150, 243, 0.9);
+
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(100%);
 }
 
 .portfolio-content {
@@ -584,4 +662,35 @@ nav {
   font-size: 16px;
   line-height: 1.88;
   letter-spacing: 0.03em;
+}
+
+/* Modal */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  min-width: 528px;
+  min-height: 581px;
+  background-color: var(--primery-white-color);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
 }
